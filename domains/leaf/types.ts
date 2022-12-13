@@ -1,11 +1,14 @@
-import { ILeaf } from '~/interfaces'
+export type Leaf = {
+  leaf_id: number;
+  front_content: string;
+  back_content: string;
+  rating: number;
+  parent_branch_id: number;
+};
 
-export type LeafType = {}
-
-export class Leaf implements ILeaf {
-  private readonly leaf: LeafType
-
-  constructor(_leaf: Leaf) {
-    this.leaf = _leaf
-  }
-}
+export type NewLeaf = {
+  front_content: string;
+  back_content: string;
+  rating: number;
+  parent_branch_id: number;
+};
