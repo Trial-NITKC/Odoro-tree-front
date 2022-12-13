@@ -3,11 +3,12 @@
     <v-card-title> 葉っぱを作る </v-card-title>
 
     <v-card-text>
+      <LeafCard :leaf="leaf"></LeafCard>
       <v-form ref="form">
         <v-text-field v-model="frontText" :rules="rules" label="おもて">
         </v-text-field>
-        <v-text-field v-model="backText" :rules="rules" label="うら">
-        </v-text-field>
+        <v-textarea v-model="backText" :rules="rules" label="うら">
+        </v-textarea>
       </v-form>
     </v-card-text>
     <v-card-actions>
@@ -20,7 +21,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { NewLeaf } from '~/domains/leaf';
+import { Leaf, NewLeaf } from "~/domains/leaf";
 
 export default Vue.extend({
   name: 'CreateLeafCard',
@@ -31,6 +32,14 @@ export default Vue.extend({
       backText: '',
       rules: [(value: string) => !!value || '必須項目です'],
     };
+  },
+  computed:{
+    leaf():Leaf{
+      return {
+        front_content: this.frontText,
+        back_content: this.backText,
+      } as unknown as Leaf;
+    }
   },
   methods: {
     close() {
