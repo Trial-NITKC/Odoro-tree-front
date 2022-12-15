@@ -1,11 +1,10 @@
-import { IBranch } from '~/interfaces'
 
-export type BranchType = {}
+export type Branch = {
+  parent_tree_id: number;
+  branch_id: number;
+};
 
-export class Branch implements IBranch {
-  private readonly branch: BranchType
+export type NewBranch = {
+  parent_tree_id: number;
+};
 
-  constructor(_branch: Branch) {
-    this.branch = _branch
-  }
-}

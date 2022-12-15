@@ -1,11 +1,9 @@
-import { ITree } from '~/interfaces'
 
-export type TreeType = {}
+export type Tree = {
+  tree_id: number;
+  name: string;
+};
 
-export class Tree implements ITree {
-  private readonly tree: TreeType
-
-  constructor(_tree: Tree) {
-    this.tree = _tree
-  }
-}
+export type NewTree = {
+  name: string;
+};
