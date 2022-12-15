@@ -1,3 +1,4 @@
+
 export type Branch = {
   parent_tree_id: number;
   branch_id: number;
@@ -6,3 +7,4 @@ export type Branch = {
 export type NewBranch = {
   parent_tree_id: number;
 };
+

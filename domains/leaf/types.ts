@@ -1,3 +1,4 @@
+
 export type Leaf = {
   leaf_id: number;
   front_content: string;
@@ -12,3 +13,4 @@ export type NewLeaf = {
   rating: number;
   parent_branch_id: number;
 };
+
