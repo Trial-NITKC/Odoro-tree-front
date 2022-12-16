@@ -71,6 +71,8 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .flip-container {
+  display: flex;
+  justify-content: center;
   -webkit-perspective: 1000;
   -moz-perspective: 1000;
   -o-perspective: 1000;
