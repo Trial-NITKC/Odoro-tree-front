@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col>
-        <div class="text-h2 text text-center">えだ</div>
+        <div class="text-h2 text text-center">{{treeName}}の木</div>
         <v-spacer></v-spacer>
         <v-btn color="success" @click="createDialog = true"
           >葉っぱをつける</v-btn
@@ -56,6 +56,7 @@ export default Vue.extend({
       leaves: [] as Leaf[],
       treeId: this.$route.params.treeId,
       createDialog: false,
+      treeName: ""
     };
   },
   head: {
@@ -63,6 +64,7 @@ export default Vue.extend({
   },
   async created() {
     await this.getLeaves();
+    await this.$accessor.getTreeById(Number(this.treeId)).then((treeData) => this.treeName = treeData.name);
   },
   methods: {
     async getLeaves() {

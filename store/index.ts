@@ -6,7 +6,7 @@ import {
   getterTree,
   mutationTree,
 } from 'typed-vuex';
-import { Branch } from '~/domains/branch';
+import { Branch, NewBranch } from '~/domains/branch';
 import { Leaf, NewLeaf } from '~/domains/leaf';
 import { NewTree, Tree } from '~/domains/tree';
 
@@ -42,14 +42,17 @@ export const actions = actionTree(
       state.commit('changeLeavesState', leaves);
     },
     async createNewTree(state, newTree: NewTree) {
+      let newTreeId = -1;
       try {
-        await this.$repositories.tree.createTree(newTree);
+        const newTreeData = await (await this.$repositories.tree.createTree(newTree)).data as Tree;
+        newTreeId = newTreeData.tree_id;
       } catch (e) {
         console.error(e);
       } finally {
         const newTrees = state.state.trees;
         state.commit('changeTreesState', newTrees);
       }
+      return newTreeId;
     },
     async createNewLeaf(
       state,
@@ -75,17 +78,17 @@ export const actions = actionTree(
       ).data;
       state.commit('changeBranchesState', branches);
     },
-    getBranchById(state, branchId: number) {
-      return (
-        state.state.branches.find((branch) => branch.branch_id === branchId) ||
-        ({} as Branch)
-      );
-    },
     async editLeaf(state, leaf: Leaf) {
       return await (
         await this.$repositories.leaf.editLeaf(leaf)
       ).data;
     },
+    async getTreeById(state, treeId: number) {
+      return await (await this.$repositories.tree.getTree(treeId)).data
+    },
+    async createNewBranch(state, newBranchData: NewBranch) {
+      await this.$repositories.branch.createBranch(newBranchData);
+    }
   }
 );
 
