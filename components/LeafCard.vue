@@ -18,14 +18,11 @@
       </div>
     </div>
     <v-card-actions>
-      <v-row>
-        <v-spacer></v-spacer>
-        <OdorokiButton
-          v-if="isShowButton"
-          :leaf="leaf"
-          @clickBtn="upLeaf"
-        ></OdorokiButton>
-      </v-row>
+      <OdorokiButton
+        v-if="isShowButton"
+        :leaf="leaf"
+        @clickBtn="upLeaf"
+      ></OdorokiButton>
     </v-card-actions>
   </v-card>
 </template>
@@ -79,6 +76,7 @@ export default Vue.extend({
   -moz-perspective: 1000;
   -o-perspective: 1000;
   perspective: 1000;
+  width: 80%;
 }
 .flipper {
   -moz-transform: perspective(1000px);

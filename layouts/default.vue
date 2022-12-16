@@ -4,7 +4,7 @@
       <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container style="width: 70%">
         <Nuxt />
       </v-container>
     </v-main>
