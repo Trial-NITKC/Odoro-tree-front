@@ -23,4 +23,9 @@ export class TreeRepository {
     const uri = `${baseURL}/trees`;
     return this.axios.post(uri, newTree);
   }
+
+  getTree(treeId: number) {
+    const uri = `${baseURL}/trees/${treeId}`;
+    return this.axios.get(uri);
+  }
 }

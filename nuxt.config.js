@@ -87,4 +87,8 @@ export default {
       poll: true,
     },
   },
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
 };
